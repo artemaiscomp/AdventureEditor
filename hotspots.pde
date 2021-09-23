@@ -84,10 +84,7 @@ class Hotspot {
     
     return click;
   }
-  void mouseCheck(){
-if (mouseX>primaryCornerX && mouseX<secondaryCornerY && mouseY>primaryCornerY && mouseY<primaryCornerY )
-  cursor(HAND);
-}
+
 }
 
 

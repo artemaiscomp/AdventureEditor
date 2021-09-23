@@ -1,8 +1,6 @@
 ArrayList<Scene> scenes = new ArrayList<Scene>();
 int currentScene = 0;
 int currentFrame;
-int mouseXL; //mouse
-int mouseYL; //mouse
 boolean editingMode = false;
 int tempo; //tempo serve para ver se pelo menos um hotspot está selecionado
 
