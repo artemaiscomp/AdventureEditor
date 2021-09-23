@@ -1,8 +1,7 @@
 class Frame {
   PImage frameImg = createImage(0, 0, RGB);
-  ArrayList<Hotspot> hotspots = new ArrayList<Hotspot>();
   Hotspot selectedHotspot;
-  
+  ArrayList<Hotspot> hotspots = new ArrayList<Hotspot>();  
   Frame(PImage image) {
     frameImg = image;
     frameImg.resize(width, height);

@@ -13,8 +13,14 @@ class Hotspot {
   boolean drawing = false;
   boolean editing = false;
   boolean selected = false;
+  float primaryCornerX;
+  float primaryCornerY;
+  float secondaryCornerX;
+  float secondaryCornerY;
   
-  Hotspot(float primaryCornerX, float primaryCornerY) {
+  Hotspot(float aX, float aY) {
+    primaryCornerX=aX;
+    primaryCornerY=aY;
     vertices[0] = new Vertice(primaryCornerX, primaryCornerY);
     drawing = true;
   }
@@ -29,7 +35,9 @@ class Hotspot {
     rect(vertices[0].x, vertices[0].y, vertices[2].x - vertices[0].x, vertices[2].y - vertices[0].y);
   }
   
-  void updateShape(float secondaryCornerX, float secondaryCornerY, boolean isFinished) {
+  void updateShape(float bX, float bY, boolean isFinished) {
+    secondaryCornerX=bX;
+    secondaryCornerY=bY;
     vertices[2] = new Vertice(secondaryCornerX, secondaryCornerY);
     
     if (isFinished) {
@@ -76,6 +84,7 @@ class Hotspot {
     
     return click;
   }
+
 }
 
 
@@ -152,4 +161,5 @@ class Vertice {
     
     return false;
   }
+
 }
