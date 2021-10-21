@@ -1,6 +1,4 @@
-//ArrayList<Scene> scenes = new ArrayList<Scene>();
 ArrayList<Frame> frames = new ArrayList<Frame>();
-//int currentScene = 0;
 int currentFrame;
 
 boolean editingMode = true;
