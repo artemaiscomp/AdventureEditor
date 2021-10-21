@@ -93,7 +93,7 @@ class HotspotEditor {
         fill(125, 0, 0, 100);
         ellipse(hotspot.vertices[i].x, hotspot.vertices[i].y, hotspot.vertices[i].radius, hotspot.vertices[i].radius);
         fill(0);
-        text(hotspot.vertices[i].x+", "+ hotspot.vertices[i].y, hotspot.vertices[i].x, hotspot.vertices[i].y);
+        //text(hotspot.vertices[i].x+", "+ hotspot.vertices[i].y, hotspot.vertices[i].x, hotspot.vertices[i].y);
       }
         
   }
