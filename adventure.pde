@@ -9,6 +9,7 @@ void setup() {
   
   setupScenes();
   setupHotspots();
+  saveState();
 }
 
 void draw() {

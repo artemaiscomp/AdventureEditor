@@ -1,16 +1,16 @@
 void setupScenes() {
-  frames.add(new Frame(loadImage("room/window.jpg")));
-  frames.add(new Frame(loadImage("room/bed.jpg")));
-  frames.add(new Frame(loadImage("room/door.jpg")));
-  frames.add(new Frame(loadImage("room/chair.jpg")));
+  frames.add(new Frame("room/window.jpg"));
+  frames.add(new Frame("room/bed.jpg"));
+  frames.add(new Frame("room/door.jpg"));
+  frames.add(new Frame("room/chair.jpg"));
   
   // janela 0
-  frames.add(new Frame(loadImage("room/window_close.jpg")));
+  frames.add(new Frame("room/window_close.jpg"));
   // porta 2
-  frames.add(new Frame(loadImage("room/tv.jpg")));
+  frames.add(new Frame("room/tv.jpg"));
   // chair 3
-  frames.add(new Frame(loadImage("room/chair_close.jpg")));
-  frames.add(new Frame(loadImage("room/bookshelf.jpg")));
+  frames.add(new Frame("room/chair_close.jpg"));
+  frames.add(new Frame("room/bookshelf.jpg"));
   
   
 }
@@ -67,4 +67,47 @@ void setupHotspots() {
   
   c7.addHotspot(140, 580, 1175, 680, 3);
   
+}
+
+void saveState() {
+  JSONArray state = new JSONArray();
+  
+  for (int i = 0; i < frames.size(); i++) {
+    JSONArray hotspots = new JSONArray();
+    JSONObject frame = new JSONObject();
+
+    frame.setInt("id", i);
+    frame.setString("frameImg", frames.get(i).frameImgRef);
+    
+    
+    for (int h = 0; h < frames.get(i).hotspots.size(); h++) {
+      JSONObject hotspot = new JSONObject();
+      JSONArray vertices = new JSONArray();
+      
+      Hotspot current = frames.get(i).hotspots.get(h);
+      
+      hotspot.setInt("id", h);
+      hotspot.setInt("target", current.targetFrameIndex);
+      
+      for (int v = 0; v < current.vertices.length; v++) {
+        JSONObject vertex = new JSONObject();
+        
+        vertex.setFloat("x", current.vertices[v].x);
+        vertex.setFloat("y", current.vertices[v].y);
+        
+        vertices.setJSONObject(v, vertex);
+      }
+      
+      hotspot.setJSONArray("vertices", vertices);
+      
+      hotspots.setJSONObject(h, hotspot);
+    }
+    
+    
+    frame.setJSONArray("hotspots", hotspots);
+
+    state.setJSONObject(i, frame);
+  }
+  
+  saveJSONArray(state, "data/adventure.json");
 }
